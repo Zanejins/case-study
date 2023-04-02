@@ -426,3 +426,4 @@
  entities: ('the serial port', 'the packaged data')(involve)
  entities: ('the serial port', 'the digital tube')(share-phon)
  entities: ('the telemetry data', 'the packaged data')(involve)
+ entities: ('the telemetry data', 'the digital tube')(share-phon)
