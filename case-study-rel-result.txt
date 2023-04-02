@@ -1,4 +1,4 @@
-entities: ('the sun search control software', 'sun acquisition')(req-ref)
+ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('the sun search control software', 'measurement data')(involve)
  entities: ('the sun search control software', 'gyroscopes')(req-ref)
  entities: ('the sun search control software', 'sun sensors')(req-ref)
@@ -194,12 +194,9 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('control the rotation of the satellite', 'find the sun')(req-ref)
  entities: ('find the sun', 'control the rotation of the satellite')(req-ref)
  entities: ('find the sun', 'keep the star')(req-ref)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the star', 'to maintain a stable attitude')(req-ref)
  entities: ('the star', 'the sun')(req-ref)
  entities: ('the star', 'the sun')(req-ref)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('Sensor', 'sun sensors')(share-phon)
  entities: ('Sensor', 'gyroscopes')(share-phon)
  entities: ('sun sensors', 'gyroscopes')(share-phon)
@@ -213,10 +210,6 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('yaw axis control torque', 'the attitude control torque')(involve)
  entities: ('Controller', 'The control computer CPU')(share-phon)
  entities: ('The control computer CPU', 'Controller')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the control computer', 'an interrupt')(share-phon)
  entities: ('thrusters', 'the switch data')(involve)
  entities: ('The control computer', 'microcontroller')(share-phon)
@@ -227,53 +220,29 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('the timer', 'timer interrupt signal')(share-phon)
  entities: ('timer interrupt signal', 'the timer')(share-phon)
  entities: ('the timing control register', 'timer interrupt signal')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the sun sensor', 'gyroscope')(involve)
  entities: ('the sun sensor', 'thruster')(involve)
  entities: ('gyroscope', 'the sun sensor')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the software', 'the timer')(share-phon)
  entities: ('the software', 'cycle interrupt signal')(share-phon)
  entities: ('the timer', 'the software')(share-phon)
  entities: ('the timer', 'cycle interrupt signal')(share-phon)
  entities: ('cycle interrupt signal', 'the timer')(share-phon)
  entities: ('the timing control register', 'cycle interrupt signal')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('ground commands', 'the satellite working mode word')(involve)
  entities: ('the serial port', 'ground commands')(involve)
  entities: ('the serial port', 'the satellite working mode word')(involve)
  entities: ('the satellite working mode word', 'ground commands')(involve)
  entities: ('the satellite working mode word', 'the serial port')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('data', 'the asynchronous serial port')(share-phon)
  entities: ('the asynchronous serial port', 'data')(involve)
  entities: ('digital control sub-system', 'one remote command')(involve)
  entities: ('digital control sub-system', 'the control software')(share-phon)
  entities: ('the control software', 'digital control sub-system')(share-phon)
  entities: ('the control software', 'one remote command')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the power-on status', 'the sensor measurement data')(involve)
  entities: ('the sensor measurement data', 'the power-on status')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('register address', 'component power-on status')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the power-on status', 'gyro')(share-phon)
  entities: ('gyro', 'the power-on status')(involve)
  entities: ('gyro', 'the serial port')(share-phon)
@@ -287,10 +256,6 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('the sun', 'the power-on state')(involve)
  entities: ('the sun measurement angle', 'the power-on state')(involve)
  entities: ('the thruster', 'the power-on state')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('angular velocity analog', 'power-on state')(involve)
  entities: ('The control software', 'a two-byte fetch command')(involve)
  entities: ('The control software', 'the gyro')(share-phon)
@@ -322,13 +287,6 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('frame header', 'checksum of the collected data')(involve)
  entities: ('checksum of the collected data', 'the length')(involve)
  entities: ('checksum of the collected data', 'frame header')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('sun visible sign', 'component power-on status')(involve)
  entities: ('sun visible sign', 'measurement angle')(involve)
  entities: ('measurement angle', 'component power-on status')(involve)
@@ -336,16 +294,6 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('AD conversion', 'the SP signal')(involve)
  entities: ('AD conversion', 'the power state signal')(involve)
  entities: ('the SP signal', 'the power state signal')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the gyroscope', 'angular velocity')(involve)
  entities: ('the gyroscope', 'attitude angle')(involve)
  entities: ('the gyroscope', 'the sun sensor')(involve)
@@ -357,10 +305,8 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('visible sign of the sun', 'angular velocity')(involve)
  entities: ('three-axis attitude angle', 'three-axis angular velocity')(involve)
  entities: ('three-axis attitude angle', 'working mode word')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the gyro measurement data', 'the three-axis angular velocity')(involve)
  entities: ('the attitude angle', 'the three-axis angular velocity')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the sun', 'the angle')(involve)
  entities: ('the sun', 'the sun sensor')(involve)
  entities: ('the sun', 'the angle')(req-ref)
@@ -373,43 +319,23 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('the angle', 'the sun sensor')(share-phon)
  entities: ('the angle', 'the gyro calculation')(req-ref)
  entities: ('the gyro calculation', 'the angle')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the angular velocity', 'the gyroscope')(share-phon)
  entities: ('the gyroscope', 'the angular velocity')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('mode word', 'mode working time')(involve)
  entities: ('sun visible sign', 'angular velocity')(req-ref)
  entities: ('the working mode word', 'the working time')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the sun', 'the backup sun sensor')(share-phon)
  entities: ('the backup sun sensor', 'restart the sun search process')(req-ref)
  entities: ('restart the sun search process', 'the backup sun sensor')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the three-axis angular velocity', 'keep the attitude of the star stable')(req-ref)
  entities: ('the satellite', 'the three-axis angular velocity')(involve)
  entities: ('the satellite', 'keep the attitude of the star stable')(req-ref)
  entities: ('keep the attitude of the star stable', 'the three-axis angular velocity')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the satellite', 'the current three-axis angular velocity')(involve)
  entities: ('the satellite', 'the working mode word')(involve)
  entities: ('satellite three-axis target angular velocity', 'working mode word')(involve)
  entities: ('the satellite three-axis target angular velocity', 'the working time of the current mode')(involve)
  entities: ('whether to switch the working mode', 'the working time of the current mode')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the satellite', 'the current three-axis angular velocity')(involve)
  entities: ('the satellite', 'the working mode word')(involve)
  entities: ('satellite three-axis control target', 'working mode word')(involve)
@@ -418,88 +344,33 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('make the satellite', 'the working time')(involve)
  entities: ('the working time', 'whether to switch the working mode')(req-ref)
  entities: ('whether to switch the working mode', 'the working time')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the satellite', 'the current three-axis angular velocity')(involve)
  entities: ('the satellite', 'the working mode word')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the control target', 'make the satellite')(involve)
  entities: ('the control target', 'the working time')(involve)
  entities: ('make the satellite', 'the working time')(involve)
  entities: ('the working time', 'whether to switch the working mode')(req-ref)
  entities: ('whether to switch the working mode', 'the working time')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('current mode working time', 'control target')(share-phon)
  entities: ('control target', 'current mode working time')(involve)
  entities: ('the control target', "the angular velocity of the satellite's three-")(involve)
  entities: ('the control target', 'the working time')(involve)
  entities: ("the angular velocity of the satellite's three-", 'the working time')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the satellite', 'the control amount')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ("satellite's current three-axis attitude angle", 'angular velocity')(involve)
  entities: ("satellite's current three-axis attitude angle", 'angular velocity')(involve)
  entities: ('target angle', 'angular velocity')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('sun visible flag', 'thruster jet interval time')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the control computer', 'a gyro communication error')(involve)
  entities: ('the gyro', 'the software')(share-phon)
  entities: ('the software', 'the gyro')(share-phon)
  entities: ('the software', 'gyro')(share-phon)
  entities: ('gyro', 'the software')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('perform data communication', 'the fetch command')(involve)
  entities: ('ground instructions', 'the power-off command')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('gyroscope', 'sun sensor')(share-phon)
  entities: ('gyroscope', 'thruster power-on switch control')(involve)
  entities: ('sun sensor', 'thruster power-on switch control')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the gyro power-on command', 'the gyro control command')(involve)
  entities: ('the asynchronous serial port', 'the gyro power-on command')(involve)
  entities: ('the asynchronous serial port', 'the gyro control command')(involve)
@@ -507,8 +378,6 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('the gyro control command', 'the gyro power-on command')(involve)
  entities: ('the asynchronous serial port', 'the asynchronous serial port')(share-phon)
  entities: ('the asynchronous serial port', 'the gyro control command')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('sun sensor switch control register address k.', 'sun sensor switch control signal')(share-phon)
  entities: ('the sun sensor', 'switching command')(involve)
  entities: ('the sun sensor', 'the software')(involve)
@@ -518,14 +387,8 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('the software', 'the control register')(share-phon)
  entities: ('the enable signal', 'the control register')(share-phon)
  entities: ('the control register', 'the enable signal')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the three-axis control volume', 'thruster')(share-phon)
  entities: ('thruster', 'the three-axis control volume')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the actual thruster', 'the power-on state')(involve)
  entities: ('the actual thruster', 'the thruster')(share-phon)
  entities: ('the actual thruster', 'the calculated three-axis control value')(involve)
@@ -537,10 +400,6 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('the calculated three-axis control value', 'the thruster')(share-phon)
  entities: ('The thruster', 'the power-on state')(involve)
  entities: ('The thruster', 'the thruster')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('running status', 'digital tube')(share-phon)
  entities: ('the software', 'running status')(involve)
  entities: ('the software', 'digital tube')(share-phon)
@@ -550,7 +409,6 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('digital tube', 'the serial port')(involve)
  entities: ('the serial port', 'running status')(involve)
  entities: ('the serial port', 'digital tube')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('satellite current working mode word', 'current angle')(involve)
  entities: ('satellite current working mode word', 'current speed')(involve)
  entities: ('current angle', 'satellite current working mode word')(involve)
@@ -558,7 +416,6 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('serial communication address', 'satellite current working mode word')(involve)
  entities: ('serial communication address', 'current angle')(involve)
  entities: ('serial communication address', 'current speed')(involve)
-ℹ Could not determine any instances in doc - returning doc as is.
  entities: ('the telemetry data', 'the packaged data')(involve)
  entities: ('the telemetry data', 'the digital tube')(share-phon)
  entities: ('the packaged data', 'the digital tube')(share-phon)
@@ -569,7 +426,3 @@ entities: ('the sun search control software', 'sun acquisition')(req-ref)
  entities: ('the serial port', 'the packaged data')(involve)
  entities: ('the serial port', 'the digital tube')(share-phon)
  entities: ('the telemetry data', 'the packaged data')(involve)
- entities: ('the telemetry data', 'the digital tube')(share-phon)
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
-ℹ Could not determine any instances in doc - returning doc as is.
