@@ -1,0 +1,220 @@
+The main function of the sun search control software is to perform sun acquisition by collecting measurement data from gyroscopes and sun sensors to determine the current attitude of the satellite, and then control the satellite to rotate around the pitch or roll axis so that the sun sensor can detect the sun and maintain the spacecraft's sun-pointing attitude.
+The software can receive ground commands through a serial port, perform command verification, and set the satellite's operating mode word.
+The control software sends a two-byte data acquisition command to the gyroscope through a serial port in each cycle, and then receives the gyroscope measurement data through another serial port. The serial port addresses used for sending and receiving commands are both 0x881.
+The angle measurement data is obtained by analog-to-digital conversion of the angle analog signal, which is a 12-bit measurement (offset binary code, range 0x000~0xFFF). The minimum code corresponds to 5/2048. The software collects the SP signal and the tuning element state signal through a stored circuit.
+The power status signal is collected by AD conversion. When powered on, the software sends a gyroscope home appliance command (0xEB92) through a serial port, and then sends a gyroscope control command through another serial port with address 0x881A. The interval between each byte sent is less than 5us.
+The sun sensor switching instruction is 190ms, with a positive pulse of 1ms. The software controls the pulse output by writing the enable signal to the controller, as shown in the table below.
+The sun search software controller consists of gyroscopes, sun sensors, three-axis control thrusters, and a data management computer. There are four sun sensors and nine gyroscopes in total.
+The system needs to use a data management computer to receive ground operator commands for packaging telemetry data and sending telemetry commands.
+The system needs to use gyroscopes to monitor the satellite's three-axis angular velocity in order to obtain the angular velocity analog signal.
+The system needs to use sun sensors to monitor the sun's position in order to obtain the sun measurement angle and perceive the sun visible flag.
+The system needs to use three-axis control thrusters to control the three-axis torque in order to drive the satellite to rotate.
+The system needs to use a mode register to store the current operating mode word, the current mode duration, the target angle, and the target angular velocity in order to control the operating mode.
+The main function of the sun search control software is to capture the sun, determine the current attitude of the satellite by collecting the measurement data of the gyroscope and the sun sensor, and then control the rotation of the satellite around the pitch or roll axis so that the sun sensor can find the sun and keep the star on the sun Orientation gesture.
+The whole search process is divided into four stages: rate damping RDSM, pitching search PASM, rolling search RASM and sun cruise CSM.
+The functions of the four stages are as follows: Rate damping: reduce the angular velocity of the three-axis rotation of the star to maintain a stable attitude; pitch search: control the star to rotate along the pitch axis to search for the sun at a certain angular velocity; roll search: control the star to rotate along the roll axis at a certain angular velocity Searching for the sun; cruising towards the sun: After searching for the sun, keep a stable attitude and keep tracking the sun.
+The satellite is composed of several subsystems, and the control system is the subsystem with the most functions and the most complex processing logic.
+The composition of the control system is as follows:
+1) Sensor (Sensor): 4 sun sensors (main and backup), 9 gyroscopes.
+2) Actuator: 12 10N thrusters, of which 2A/2B, 3A/3B provide the attitude control torque of the roll axis, 4A/4B, 5A/5B provide the attitude control torque of the pitch axis, 6A/6B, 7A/ 7B provides yaw axis control torque.
+3) Controller (Controller): The control computer CPU uses 80C32, PROM32K bytes, and SRAM8K bytes.
+The system composition is shown in the figure below.
+The control software runs in the mode of main program plus interruption, the main program is an infinite loop, and the interruption is 32 milliseconds regular cycle interruption.
+Their functions are as follows:
+(1) Main program function: first, initialize the variables and power on the sensors (gyroscope, sun sensor) and actuator (thruster), start the 32ms timer interrupt, and then execute the 160ms cycle control task (every cycle completes the sensor Measurement data acquisition, remote control and telemetry processing, mode management, control quantity calculation, thruster allocation calculation, fault diagnosis and processing, etc.).
+(2) 32ms interrupt service program function: the control computer generates an interrupt every 32ms, enters the interrupt service program, performs interrupt counting in the interrupt service program, and generates a 160ms control cycle for five 32ms interrupts.
+At the 128th ms of each 160ms control cycle, the switch data of 12 10N thrusters will be sequentially output (the system needs to output the jet at a certain time).
+The control computer takes the microcontroller 80C32E as the core, the main frequency is 11.0592MHZ, including 32KB of PROM and 8KB of SRAM.
+Only one interrupt is processed in the sun search control software, that is, the 32ms timer interrupt.
+When the software is initialized, the timer can be started to generate a continuous 32ms timer interrupt signal by writing a '1' to the D[0] bit of the timing control register GTCR0.
+The address of register GTCR0 is 0x8083.
+The allocation of memory addresses is as follows.
+Programming language: C language Editing and compiling software: KeilμVision2, version number: 7.06.
+The relationship between the software and the external interface is shown in the figure below.
+The software function is decomposed, and the software data flow diagram is as shown in the figure below.
+a. Requirement ID: XX-FREQ1
+b. Function description: software initialization settings
+c. Calling condition: call once in the main program when power on or reset
+d. Input: component switch control operation register address
+e. Output: component power switch control signal
+f. Processing:
+(1) Execute controller parameter initialization, and set the initial working mode word as rate damping;
+(2) Component power-on operation: Power on the sun sensor, gyroscope, and thruster, see section 3.2.8 for the specific power-on operation process;
+(3) Open 32ms timer interrupt.
+After the software is initialized, the timer can be started to generate a continuous 32ms cycle interrupt signal by writing '1' to the D[0] bit of the timing control register GTCR0. The address of the register GTCR0 is 0x8083.
+3.1.2XYZ[
+a. Requirement ID: XX-FREQ2
+b. Function description: Receive ground commands through the serial port, perform command verification, and set the satellite working mode word
+c. Calling conditions: 160ms cycle call
+d. Input: remote control receiving serial port address
+e. Output: next cycle working mode word
+f. Processing:
+(1) Receive data from the asynchronous serial port every cycle, and the address of the remote receiving serial port is: 0x88DA (the digital control sub-system will only send one remote command to the control software at most every 160ms);
+(2) Determine whether the data length, frame header, and checksum meet the format requirements of Table 3.2-1;
+(3) Execute the command that passed the verification and set the satellite working mode word.
+a. Requirement ID: XX-FREQ3
+b. Function description: collect the power-on status of each component and the sensor measurement data
+c. Calling conditions: 160ms cycle call
+d. Input: collect register address e. Output: component power-on status, gyroscope second pulse count, sun visible sign and angle
+f. Processing:
+(1) Collect the power-on status and pulse count of the gyro through the serial port;
+(2) Collect the power-on state of the sun sensor, the visible sign of the sun, and the sun measurement angle (the angle between the sun light and the normal line of the sensor) through AD;
+(3) Collect the power-on state of the thruster through AD.
+a. Requirement identification: XX-FREQ3-1
+b. Function description: Gyro data acquisition
+c. Calling conditions: 160ms cycle call
+d. Input: serial port operation address
+e. Output: power-on state, angular velocity analog
+f. Processing: The control software sends a two-byte fetch command 0xEB91 to the gyro through the asynchronous serial port every cycle, and then the software receives the gyro measurement data through the asynchronous serial port, and the serial port address used for sending commands and receiving data is 0x881A.
+The time interval from sending fetch instruction to reading data from asynchronous serial port should be greater than 5ms.
+The software needs to judge the length, frame header and checksum of the collected data.
+The timing relationship of gyroscope data acquisition is shown in the figure below.
+The specific data transmission format is shown in Table 3.2-2 and Table 3.2-3.
+The method of converting pulse count to angular velocity is as follows: 3.2.3.2')*+#$%&
+a. Requirement identification: XX-FREQ3-2
+b. Function description: Sun sensor data acquisition
+c. Calling conditions: 160ms cycle call
+d. Input: AD acquisition register address
+e. Output: component power-on status, sun visible sign and measurement angle
+f. Processing: 12-bit angle data (offset binary code, range 0x000~0xFFF, minimum code bit corresponds to 5/2048) is obtained through AD conversion of the angle analog quantity, and the SP signal and the power state signal are compared by the latch circuit to collect.
+The format of the 12-bit angle data is as follows:
+a. Requirement identification: XX-FREQ3-3
+b. Function description: thruster data acquisition
+c. Calling conditions: 160ms cycle call
+d. Input: AD acquisition register address
+e. Output: thruster power-on status
+f. Processing: collect the power status signal through AD:
+a. Requirement ID: XX-FREQ4
+b. Function description: satellite three-axis attitude determination
+c. Calling conditions: 160ms cycle call
+d. Input: angular velocity measured by the gyroscope, attitude angle collected by the sun sensor, visible sign of the sun
+e. Output: three-axis attitude angle, three-axis angular velocity, working mode word
+f. Processing:
+(1) Calculate the three-axis angular velocity based on the gyro measurement data, and estimate the attitude angle.
+(2) Determination of attitude angle:
+1) In cruise mode, if the sun is visible, the angle collected by the sun sensor is selected as the attitude angle, otherwise the angle obtained by the gyro calculation is selected as the attitude angle.
+2) In other modes, the roll angle and pitch angle are reset to zero.
+(3) The three-axis angular velocity adopts the angular velocity calculated by the gyroscope.
+The specific algorithm is as follows: attitude determination main process A1 gyro data field removal processing A2 calculation of three-axis angular velocity A3 calculation of gyro angle integral A4 determination of satellite attitude angle
+g. Requirement identification: XX-FREQ5
+h. Function description: sun search mode switching management
+i. Calling conditions: 160ms cycle calling
+j. Input: current mode word, current mode working time, sun visible sign, satellite attitude angle and angular velocity
+k. Output: the working mode word of the next cycle, and the working time of the current mode is accumulated
+l. Processing: The sun search process consists of four sub-modes: rate damping RDSM, pitch search PASM, rolling search RASM, and cruise CSM. The functions realized by each sub-mode are shown in the table below.
+The automatic switching relationship of each sub-mode is shown in the figure below.
+The automatic switching conditions of each sub-mode are as follows:
+Condition 1 (rate damping→pitch search): the absolute value of the angular velocity of each axis is less than 0.15/s for 44.8s continuously or the rate damping sub-mode lasts for 128s;
+Condition 2 (pitch search→scroll search): the sun cannot be found after working continuously for 720s in the pitch search mode;
+Condition 3 (scroll search→pitch search): the sun cannot be found after 800s of continuous operation of the scroll search method;
+Condition 4 (pitch search → cruise): the sun is visible and lasts longer than 2.048s;
+Condition 5 (scroll search → cruise): the sun is visible and lasts longer than 2.048s;
+Condition 6 (pitch search → rate damping): If the sun is still not found after performing the pitch search and scroll search twice, switch the backup sun sensor, restart the sun search process, and switch to the rate damping mode.
+If you still cannot find the sun after switching the backup sun sensor, stop jetting.
+a. Requirement identification: XX-FREQ5-1
+b. Function description: control the three-axis angular velocity of the satellite to keep the attitude of the star stable (the three-axis angular velocity is small)
+c. Calling conditions: power-on initialization, or calling after the sun cannot be found
+d. Input: the current three-axis angular velocity of the satellite, the working mode word
+e. Output: satellite three-axis target angular velocity, working mode word
+f. Processing: Set the satellite three-axis target angular velocity to 0; accumulate the working time of the current mode; judge whether to switch the working mode.
+The specific algorithm is as follows: 3.2.5.2456723
+a. Requirement identification: XX-FREQ5-2
+b. Functional description: Rotate around the Y axis at -0.5/s to search for the sun
+c. Calling conditions: the rate damping is completed, or the first scroll search for the sun is unsuccessful
+d. Input: the current three-axis angular velocity of the satellite, the working mode word
+e. Output: satellite three-axis control target (-0.5/s rotation around the Y axis), working mode word
+f. Processing: Set the control target to make the satellite rotate around the Y axis at -0.5/s; accumulate the working time of the current mode; judge whether to switch the working mode.
+The specific algorithm is as follows: 3.2.5.3896723
+a. Requirement identification: XX-FREQ5-3
+b. Function description: Rotate around the X axis at 0.5/s to search for the sun
+c. Calling conditions: pitch search for the sun is unsuccessful
+d. Input: the current three-axis angular velocity of the satellite, the working mode word
+e. Output: satellite three-axis control target (0.5/s rotation around the X axis), working mode word
+f. Processing: Set the control target to make the satellite rotate around the X axis at 0.5/s; accumulate the working time of the current mode; judge whether to switch the working mode.
+The specific algorithm is as follows: 3.2.5.4:;<=23
+a. Requirement identification: XX-FREQ5-4
+b. Function description: keep the satellite attitude stable after searching for the sun
+c. Calling conditions: success in tilting to search for the sun, or success in scrolling to search for the sun
+d. Input: three-axis angular velocity, current mode working time
+e. Output: current mode working time, control target (three-axis angular velocity is 0)
+f. Processing: set the control target, the angular velocity of the satellite's three-axis target is 0; accumulate the working time of the current mode; judge whether to switch the working mode.
+The specific algorithm is as follows:
+m. Requirement identification: XX-FREQ6
+n. Function description: Calculate the control amount according to the current attitude of the satellite and the target attitude
+o. Calling conditions: call p in 160ms cycle
+.Input: satellite's current three-axis attitude angle and angular velocity, target angle and angular velocity (three-axis angular offset and angular velocity offset)
+q. Output: three-axis control volume
+r. Processing:
+(1) Before the controller operation, limit the three-axis attitude angle i where: i=x, y, z, Px, Py, Pz represent the three-axis attitude angle , , ; Pxb, Pyb, Pzb are three-axis attitude offsets b, b, b respectively; x, y, z are three-axis attitude angular velocities respectively; xb, yb, zb are angular velocity offsets respectively.
+Among them, the three-axis limit value is: angle limit 8!, angular velocity limit 1.2!/s.
+(2) Proportional-differential loop calculation YxKpxUpxKdxUdx; YyKpyUpyKdyUdy; YzKdzUdz; controller parameters are shown in the table below.
+s. Requirement ID: XX-FREQ7
+t. Function description: fault diagnosis and processing
+u. Calling conditions: 160ms cycle call
+v. Input: sun visible flag, thruster jet interval time
+w. Output: Sun sensor plus power-off switch signal
+x. Processing:
+(1) Troubleshooting for unsuccessful sun search
+(2) Thruster frequent jet fault diagnosis and treatment
+(3) Gyro communication fault diagnosis and treatment
+a. Requirement identification: XX-FREQ7-1
+b. Function description: Switch to backup sun sensor after sun search is unsuccessful
+c. Calling conditions: 160ms cycle call
+d. Input: sun visible sign
+e. Output: Sun sensor plus power-off switch signal, thruster switch signal
+f. Processing:
+(1) If the sun visible sign SP is still not visible after performing 2 consecutive pitch searches and roll searches, it is determined that the sun search is unsuccessful;
+(2) Switch the sun sensor to backup, restart the sun search, and enter rate damping.
+The specific algorithm pseudo code is omitted.
+g. Requirement identification: XX-FREQ7-2
+h. Function description: Diagnosis and treatment of thruster frequent air injection faults
+i. Calling conditions: 160ms cycle call
+j. Input: Thruster injection interval time
+k. Output: thruster switch signal
+l. Treatment: Judging that the continuous 5s jetting interval of the thruster is less than 1s, it is determined that frequent jetting occurs and stop jetting.
+The specific algorithm pseudo code is omitted.
+m. Requirement identification: XX-FREQ7-3
+n. Function description: gyro communication fault diagnosis and treatment
+o. Calling conditions: 160ms cycle calling
+p. Input: Gyro communication error time count
+q. Output: Gyro plus power-off control
+r. Processing:
+(1) If the control computer judges that a gyro communication error (including data length, frame header, and checksum error) occurs, add 1 to the communication error cycle count;
+(2) If the gyro has a communication error for 5 consecutive cycles, the software will perform the power-off operation of the gyro;
+(3) Wait for 5 cycles after power-off, and perform power-on operation;
+(4) Wait for 5 cycles after re-powering on, then perform data communication, and send the fetch command;
+(5) After power-off and power-on to restore communication, if communication errors still occur for 5 consecutive cycles, send the power-off command again and wait for ground instructions.
+See Section 3.2.8.1 for the specific data communication format.
+y. Requirement identification: XX-FREQ8z. Function description: actuator control output aa. Call condition: 160ms cycle call bb. Input: three-axis control quantity cc. Output: each thruster output dd. Processing:
+(1) Execute gyroscope, sun sensor, thruster power-on switch control when power on
+(2) Perform thruster output control every 160ms period.
+a. Requirement identification: XX-FREQ8-1
+b. Functional description: three-floating gyro control output
+c. Calling conditions: call when power-on initialization
+d. Input: gyro control switch register address
+e. Output: gyro control switch signal
+f. Processing: Send the gyro power-on command (0xEB92) through the asynchronous serial port when powering on, and send the gyro control command through the asynchronous serial port. The serial port address is 0x881A, and the sending interval between each byte is less than 5us.
+g. Requirement mark: XX-FREQ8-2h. Functional description: Sun sensor switch control
+i. Calling conditions: call when power-on initialization, or sun sensor invisible failure
+j. Input: sun sensor switch control register address k. Output: sun sensor switch control signal
+l. Processing: The switching command of the sun sensor is a positive pulse of 190ms1ms, and the software controls the output of the pulse by writing the enable signal to the control register. The specific operation is shown in the table below.
+a. Requirement identification: XX-FREQ8-3
+b. Function description: the three-axis control volume is distributed to each thruster
+c. Calling conditions: 160ms cycle call
+d. Input: three-axis control volume
+e. Output: output of each thruster
+f. Processing:
+(1) Thruster distribution calculation.
+Select the actual thruster according to the power-on state of the thruster and the calculated three-axis control value. The thruster combination logic is as follows.
+Among them, Trx=-Yx; Try=-Yy; Trz=-Yz; Yx, Yy, Yz are the results obtained from the calculation of the three-axis control quantity.
+(2) Thruster output.
+First perform the enable level output of each thruster, and then perform the enable and close of the pulse switch. The specific operation is shown in the table below.
+ee. Requirement ID: XX-FREQ9
+ff. Function description: Pack the running status of the software and send it to the digital tube through the serial port
+gg. Call condition: 160ms cycle call
+hh. Input: satellite current working mode word, current angle and current speed, serial communication address
+ii. Output: None
+jj. Processing: package the telemetry data every cycle, and send the packaged data to the digital tube through the serial port. The specific format of the telemetry data format is as follows: use the asynchronous serial port for telemetry data communication. The serial port address is: 0x88DB, and the sending interval between each byte is less than 5us.
+The controller uses single-precision floating-point numbers in the calculation process.
+The safety criticality level of this software is A level.
+Reliability and security requirements are as follows.
