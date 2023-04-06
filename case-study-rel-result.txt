@@ -1,487 +1,124 @@
- entities: ('the sun search control software', 'sun acquisition')(req-ref)
- entities: ('the sun search control software', 'measurement data')(involve)
- entities: ('the sun search control software', 'gyroscopes')(share-phon)
- entities: ('the sun search control software', 'sun sensors')(share-phon)
- entities: ('the sun search control software', 'determine the current attitude of the satellite')(share-phon)
- entities: ('sun acquisition', 'measurement data')(involve)
- entities: ('sun acquisition', 'gyroscopes')(share-phon)
- entities: ('sun acquisition', 'sun sensors')(share-phon)
- entities: ('sun acquisition', 'determine the current attitude of the satellite')(req-ref)
- entities: ('measurement data', 'sun acquisition')(req-ref)
- entities: ('measurement data', 'determine the current attitude of the satellite')(req-ref)
- entities: ('gyroscopes', 'the sun search control software')(involve)
- entities: ('gyroscopes', 'sun acquisition')(req-ref)
- entities: ('gyroscopes', 'measurement data')(involve)
- entities: ('gyroscopes', 'sun sensors')(share-phon)
- entities: ('gyroscopes', 'determine the current attitude of the satellite')(req-ref)
- entities: ('gyroscopes', 'the satellite')(req-ref)
- entities: ('sun sensors', 'the sun search control software')(req-ref)
- entities: ('sun sensors', 'sun acquisition')(req-ref)
- entities: ('sun sensors', 'measurement data')(involve)
- entities: ('sun sensors', 'gyroscopes')(req-ref)
- entities: ('sun sensors', 'determine the current attitude of the satellite')(req-ref)
- entities: ('sun sensors', 'the satellite')(req-ref)
- entities: ('determine the current attitude of the satellite', 'sun acquisition')(req-ref)
- entities: ('determine the current attitude of the satellite', 'measurement data')(involve)
- entities: ('the satellite', 'measurement data')(involve)
- entities: ('the satellite', 'gyroscopes')(share-phon)
- entities: ('the satellite', 'determine the current attitude of the satellite')(req-ref)
- entities: ('the satellite', 'the sun sensor')(share-phon)
- entities: ('the satellite', 'detect the sun')(req-ref)
- entities: ('the satellite', "maintain the spacecraft's sun-pointing attitude.")(req-ref)
- entities: ('the sun sensor', 'the satellite')(req-ref)
- entities: ('the sun sensor', 'detect the sun')(req-ref)
- entities: ('the sun sensor', "maintain the spacecraft's sun-pointing attitude.")(req-ref)
- entities: ('detect the sun', "maintain the spacecraft's sun-pointing attitude.")(req-ref)
- entities: ("maintain the spacecraft's sun-pointing attitude.", 'the sun sensor')(share-phon)
- entities: ("maintain the spacecraft's sun-pointing attitude.", 'detect the sun')(req-ref)
- entities: ('The software', 'ground commands')(involve)
- entities: ('The software', 'a serial port')(share-phon)
- entities: ('The software', 'command verification')(involve)
- entities: ('The software', "the satellite's operating mode word")(involve)
- entities: ('ground commands', 'command verification')(involve)
- entities: ('ground commands', "the satellite's operating mode word")(involve)
- entities: ('a serial port', 'The software')(involve)
- entities: ('a serial port', 'ground commands')(involve)
- entities: ('a serial port', 'command verification')(involve)
- entities: ('a serial port', "the satellite's operating mode word")(involve)
- entities: ('command verification', 'ground commands')(involve)
- entities: ('command verification', "the satellite's operating mode word")(involve)
- entities: ("the satellite's operating mode word", 'ground commands')(involve)
- entities: ("the satellite's operating mode word", 'command verification')(involve)
- entities: ('The control software', 'a two-byte data acquisition command')(involve)
- entities: ('The control software', 'the gyroscope')(share-phon)
- entities: ('The control software', 'a serial port')(share-phon)
- entities: ('a two-byte data acquisition command', 'the gyroscope')(share-phon)
- entities: ('a two-byte data acquisition command', 'a serial port')(share-phon)
- entities: ('the gyroscope', 'a two-byte data acquisition command')(involve)
- entities: ('the gyroscope', 'a serial port')(share-phon)
- entities: ('the gyroscope', 'the gyroscope measurement data')(involve)
- entities: ('the gyroscope', 'another serial port')(share-phon)
- entities: ('a serial port', 'The control software')(involve)
- entities: ('a serial port', 'a two-byte data acquisition command')(involve)
- entities: ('a serial port', 'the gyroscope')(req-ref)
- entities: ('a serial port', 'the gyroscope measurement data')(involve)
- entities: ('a serial port', 'another serial port')(share-phon)
- entities: ('the gyroscope measurement data', 'sending and receiving commands')(req-ref)
- entities: ('another serial port', 'the gyroscope')(involve)
- entities: ('another serial port', 'a serial port')(involve)
- entities: ('another serial port', 'the gyroscope measurement data')(involve)
- entities: ('another serial port', 'sending and receiving commands')(involve)
- entities: ('the angle analog signal', 'The angle measurement data')(involve)
- entities: ('The software', 'SP signal')(involve)
- entities: ('The software', 'the tuning element state signal')(involve)
- entities: ('The software', 'a stored circuit')(share-phon)
- entities: ('SP signal', 'the tuning element state signal')(involve)
- entities: ('the tuning element state signal', 'SP signal')(involve)
- entities: ('a stored circuit', 'SP signal')(involve)
- entities: ('a stored circuit', 'the tuning element state signal')(involve)
- entities: ('The power status signal', 'a gyroscope home appliance command')(involve)
- entities: ('AD conversion', 'The power status signal')(involve)
- entities: ('AD conversion', 'the software')(involve)
- entities: ('AD conversion', 'a gyroscope home appliance command')(involve)
- entities: ('AD conversion', 'a serial port')(share-phon)
- entities: ('the software', 'The power status signal')(involve)
- entities: ('the software', 'AD conversion')(share-phon)
- entities: ('the software', 'a gyroscope home appliance command')(involve)
- entities: ('the software', 'a serial port')(share-phon)
- entities: ('the software', 'a gyroscope control command')(involve)
- entities: ('a gyroscope home appliance command', 'The power status signal')(involve)
- entities: ('a gyroscope home appliance command', 'a serial port')(share-phon)
- entities: ('a gyroscope home appliance command', 'a gyroscope control command')(involve)
- entities: ('a serial port', 'AD conversion')(involve)
- entities: ('a serial port', 'a gyroscope home appliance command')(involve)
- entities: ('a serial port', 'a gyroscope control command')(involve)
- entities: ('a serial port', 'through another serial port')(involve)
- entities: ('a gyroscope control command', 'a gyroscope home appliance command')(involve)
- entities: ('through another serial port', 'a gyroscope home appliance command')(involve)
- entities: ('through another serial port', 'a serial port')(share-phon)
- entities: ('through another serial port', 'a gyroscope control command')(involve)
- entities: ('The sun sensor', 'instruction')(involve)
- entities: ('The sun sensor', 'The software')(share-phon)
- entities: ('instruction', 'the enable signal')(involve)
- entities: ('The software', 'The sun sensor')(share-phon)
- entities: ('The software', 'instruction')(involve)
- entities: ('The software', 'the enable signal')(involve)
- entities: ('The software', 'the controller')(share-phon)
- entities: ('the enable signal', 'the controller')(share-phon)
- entities: ('the controller', 'the enable signal')(involve)
- entities: ('The sun search software controller', 'gyroscopes')(share-phon)
- entities: ('The sun search software controller', 'sun sensors')(share-phon)
- entities: ('The sun search software controller', 'three-axis control thrusters')(share-phon)
- entities: ('The sun search software controller', 'a data management computer')(share-phon)
- entities: ('gyroscopes', 'The sun search software controller')(req-ref)
- entities: ('gyroscopes', 'sun sensors')(share-phon)
- entities: ('gyroscopes', 'three-axis control thrusters')(share-phon)
- entities: ('gyroscopes', 'a data management computer')(req-ref)
- entities: ('gyroscopes', 'sun sensors')(share-phon)
- entities: ('sun sensors', 'The sun search software controller')(req-ref)
- entities: ('sun sensors', 'gyroscopes')(share-phon)
- entities: ('sun sensors', 'three-axis control thrusters')(share-phon)
- entities: ('sun sensors', 'a data management computer')(req-ref)
- entities: ('sun sensors', 'sun sensors')(share-phon)
- entities: ('three-axis control thrusters', 'The sun search software controller')(req-ref)
- entities: ('three-axis control thrusters', 'gyroscopes')(share-phon)
- entities: ('three-axis control thrusters', 'sun sensors')(share-phon)
- entities: ('three-axis control thrusters', 'a data management computer')(req-ref)
- entities: ('three-axis control thrusters', 'sun sensors')(share-phon)
- entities: ('three-axis control thrusters', 'gyroscopes')(share-phon)
- entities: ('a data management computer', 'gyroscopes')(share-phon)
- entities: ('a data management computer', 'sun sensors')(share-phon)
- entities: ('a data management computer', 'three-axis control thrusters')(share-phon)
- entities: ('a data management computer', 'sun sensors')(share-phon)
- entities: ('a data management computer', 'gyroscopes')(share-phon)
- entities: ('sun sensors', 'gyroscopes')(share-phon)
- entities: ('sun sensors', 'sun sensors')(share-phon)
- entities: ('sun sensors', 'three-axis control thrusters')(share-phon)
- entities: ('sun sensors', 'a data management computer')(req-ref)
- entities: ('sun sensors', 'gyroscopes')(share-phon)
- entities: ('gyroscopes', 'three-axis control thrusters')(share-phon)
- entities: ('gyroscopes', 'a data management computer')(req-ref)
- entities: ('gyroscopes', 'sun sensors')(share-phon)
- entities: ('The system', 'a data management computer')(share-phon)
- entities: ('The system', 'ground operator commands')(involve)
- entities: ('The system', 'packaging telemetry data')(involve)
- entities: ('The system', 'sending telemetry commands')(involve)
- entities: ('a data management computer', 'The system')(involve)
- entities: ('a data management computer', 'ground operator commands')(involve)
- entities: ('a data management computer', 'packaging telemetry data')(involve)
- entities: ('a data management computer', 'sending telemetry commands')(involve)
- entities: ('ground operator commands', 'packaging telemetry data')(involve)
- entities: ('packaging telemetry data', 'sending telemetry commands')(req-ref)
- entities: ('The system', 'gyroscopes')(share-phon)
- entities: ('The system', "monitor the satellite's three-axis angular velocity")(req-ref)
- entities: ('The system', 'obtain the angular velocity analog signal')(req-ref)
- entities: ('gyroscopes', 'The system')(req-ref)
- entities: ('gyroscopes', "monitor the satellite's three-axis angular velocity")(req-ref)
- entities: ('gyroscopes', 'obtain the angular velocity analog signal')(req-ref)
- entities: ("monitor the satellite's three-axis angular velocity", 'gyroscopes')(share-phon)
- entities: ("monitor the satellite's three-axis angular velocity", 'obtain the angular velocity analog signal')(req-ref)
- entities: ('obtain the angular velocity analog signal', 'gyroscopes')(share-phon)
- entities: ('obtain the angular velocity analog signal', "monitor the satellite's three-axis angular velocity")(req-ref)
- entities: ('The system', 'sun sensors')(share-phon)
- entities: ('The system', "the sun's position")(involve)
- entities: ('The system', 'obtain the sun measurement angle')(share-phon)
- entities: ('sun sensors', 'The system')(involve)
- entities: ('sun sensors', "the sun's position")(involve)
- entities: ('sun sensors', 'obtain the sun measurement angle')(req-ref)
- entities: ('sun sensors', 'perceive the sun visible flag')(req-ref)
- entities: ("the sun's position", 'sun sensors')(share-phon)
- entities: ("the sun's position", 'obtain the sun measurement angle')(req-ref)
- entities: ("the sun's position", 'perceive the sun visible flag')(req-ref)
- entities: ('obtain the sun measurement angle', 'sun sensors')(share-phon)
- entities: ('obtain the sun measurement angle', "the sun's position")(involve)
- entities: ('obtain the sun measurement angle', 'perceive the sun visible flag')(req-ref)
- entities: ('perceive the sun visible flag', 'sun sensors')(share-phon)
- entities: ('perceive the sun visible flag', "the sun's position")(involve)
- entities: ('perceive the sun visible flag', 'obtain the sun measurement angle')(req-ref)
- entities: ('The system', 'three-axis control thrusters')(share-phon)
- entities: ('The system', 'control the three-axis torque')(involve)
- entities: ('The system', 'drive the satellite to rotate.')(req-ref)
- entities: ('three-axis control thrusters', 'The system')(involve)
- entities: ('three-axis control thrusters', 'control the three-axis torque')(involve)
- entities: ('three-axis control thrusters', 'drive the satellite to rotate.')(req-ref)
- entities: ('control the three-axis torque', 'three-axis control thrusters')(share-phon)
- entities: ('control the three-axis torque', 'drive the satellite to rotate.')(req-ref)
- entities: ('drive the satellite to rotate.', 'three-axis control thrusters')(share-phon)
- entities: ('drive the satellite to rotate.', 'control the three-axis torque')(involve)
- entities: ('The system', 'a mode register')(share-phon)
- entities: ('The system', 'the current operating mode word')(involve)
- entities: ('The system', 'the current mode duration')(involve)
- entities: ('a mode register', 'The system')(involve)
- entities: ('a mode register', 'the current operating mode word')(involve)
- entities: ('a mode register', 'the current mode duration')(involve)
- entities: ('a mode register', 'the target angle')(involve)
- entities: ('the current operating mode word', 'the current mode duration')(involve)
- entities: ('the current operating mode word', 'the target angle')(involve)
- entities: ('the current operating mode word', 'the target angular velocity')(involve)
- entities: ('the current mode duration', 'the current operating mode word')(involve)
- entities: ('the current mode duration', 'the target angle')(involve)
- entities: ('the current mode duration', 'the target angular velocity')(involve)
- entities: ('the current mode duration', 'control the operating mode')(req-ref)
- entities: ('the target angle', 'the current operating mode word')(involve)
- entities: ('the target angle', 'the current mode duration')(involve)
- entities: ('the target angle', 'control the operating mode')(req-ref)
- entities: ('the target angular velocity', 'the current operating mode word')(involve)
- entities: ('the target angular velocity', 'the current mode duration')(involve)
- entities: ('the target angular velocity', 'control the operating mode')(req-ref)
- entities: ('control the operating mode', 'the current mode duration')(involve)
- entities: ('control the operating mode', 'the target angle')(involve)
- entities: ('control the operating mode', 'the target angular velocity')(involve)
- entities: ('the sun search control software', 'the sun')(req-ref)
- entities: ('the sun search control software', 'determine the current attitude of the satellite')(share-phon)
- entities: ('the sun search control software', 'the measurement data')(involve)
- entities: ('the sun', 'the measurement data')(involve)
- entities: ('the sun', 'gyroscope')(share-phon)
- entities: ('determine the current attitude of the satellite', 'the sun')(req-ref)
- entities: ('determine the current attitude of the satellite', 'the measurement data')(involve)
- entities: ('the measurement data', 'the sun')(req-ref)
- entities: ('gyroscope', 'the sun')(req-ref)
- entities: ('gyroscope', 'determine the current attitude of the satellite')(req-ref)
- entities: ('gyroscope', 'the measurement data')(involve)
- entities: ('gyroscope', 'the sun sensor')(req-ref)
- entities: ('gyroscope', 'control the rotation of the satellite')(req-ref)
- entities: ('the sun sensor', 'the sun')(req-ref)
- entities: ('the sun sensor', 'determine the current attitude of the satellite')(req-ref)
- entities: ('the sun sensor', 'the measurement data')(involve)
- entities: ('the sun sensor', 'gyroscope')(share-phon)
- entities: ('the sun sensor', 'control the rotation of the satellite')(req-ref)
- entities: ('control the rotation of the satellite', 'the measurement data')(involve)
- entities: ('control the rotation of the satellite', 'find the sun')(req-ref)
- entities: ('find the sun', 'keep the star')(req-ref)
- entities: ('keep the star', 'find the sun')(req-ref)
- entities: ('the star', 'to maintain a stable attitude')(req-ref)
- entities: ('the star', 'the sun')(req-ref)
- entities: ('the star', 'the sun')(req-ref)
- entities: ('Sensor', 'sun sensors')(share-phon)
- entities: ('Sensor', 'gyroscopes')(share-phon)
- entities: ('sun sensors', 'Sensor')(req-ref)
- entities: ('sun sensors', 'gyroscopes')(share-phon)
- entities: ('gyroscopes', 'Sensor')(req-ref)
- entities: ('gyroscopes', 'sun sensors')(share-phon)
- entities: ('Actuator', 'thrusters')(share-phon)
- entities: ('Actuator', 'the attitude control torque')(involve)
- entities: ('thrusters', 'Actuator')(involve)
- entities: ('thrusters', 'the attitude control torque')(involve)
- entities: ('Controller', 'The control computer CPU')(share-phon)
- entities: ('The control computer CPU', 'Controller')(involve)
- entities: ('the control computer', 'an interrupt')(involve)
- entities: ('thrusters', 'the switch data')(involve)
- entities: ('The control computer', 'microcontroller')(share-phon)
- entities: ('microcontroller', 'The control computer')(involve)
- entities: ('the sun search control software', 'the 32ms timer interrupt.')(share-phon)
- entities: ('the 32ms timer interrupt.', 'the sun search control software')(involve)
- entities: ('the software', 'the timer')(share-phon)
- entities: ('the software', 'timer interrupt signal')(share-phon)
- entities: ('the timer', 'the software')(involve)
- entities: ('the timer', 'timer interrupt signal')(req-ref)
- entities: ('timer interrupt signal', 'the software')(involve)
- entities: ('timer interrupt signal', 'the timer')(involve)
- entities: ('timer interrupt signal', 'the timing control register')(involve)
- entities: ('the sun sensor', 'gyroscope')(share-phon)
- entities: ('the sun sensor', 'thruster')(share-phon)
- entities: ('gyroscope', 'the sun sensor')(share-phon)
- entities: ('gyroscope', 'thruster')(share-phon)
- entities: ('thruster', 'the sun sensor')(share-phon)
- entities: ('thruster', 'gyroscope')(share-phon)
- entities: ('the software', 'the timer')(share-phon)
- entities: ('the software', 'cycle interrupt signal')(share-phon)
- entities: ('the timer', 'the software')(share-phon)
- entities: ('the timer', 'cycle interrupt signal')(share-phon)
- entities: ('cycle interrupt signal', 'the software')(involve)
- entities: ('cycle interrupt signal', 'the timer')(involve)
- entities: ('cycle interrupt signal', 'the timing control register')(involve)
- entities: ('the timing control register', 'cycle interrupt signal')(share-phon)
- entities: ('ground commands', 'the satellite working mode word')(involve)
- entities: ('the serial port', 'ground commands')(involve)
- entities: ('the serial port', 'the satellite working mode word')(involve)
- entities: ('the satellite working mode word', 'ground commands')(involve)
- entities: ('data', 'the asynchronous serial port')(share-phon)
- entities: ('the asynchronous serial port', 'data')(involve)
- entities: ('digital control sub-system', 'one remote command')(involve)
- entities: ('digital control sub-system', 'the control software')(share-phon)
- entities: ('one remote command', 'the control software')(share-phon)
- entities: ('the control software', 'digital control sub-system')(involve)
- entities: ('the control software', 'one remote command')(involve)
- entities: ('the sensor measurement data', 'the power-on status')(involve)
- entities: ('register address', 'component power-on status')(involve)
- entities: ('register address', 'gyroscope second pulse count')(involve)
- entities: ('register address', 'sun visible sign')(req-ref)
- entities: ('component power-on status', 'gyroscope second pulse count')(involve)
- entities: ('gyroscope second pulse count', 'component power-on status')(involve)
- entities: ('gyro', 'the power-on status')(involve)
- entities: ('gyro', 'the serial port')(share-phon)
- entities: ('the serial port', 'the power-on status')(involve)
- entities: ('the serial port', 'gyro')(req-ref)
- entities: ('the sun sensor', 'the power-on state')(involve)
- entities: ('the sun sensor', 'the visible sign')(involve)
- entities: ('the sun sensor', 'the sun')(req-ref)
- entities: ('the sun sensor', 'the sun measurement angle')(req-ref)
- entities: ('the visible sign', 'the power-on state')(involve)
- entities: ('the sun', 'the power-on state')(involve)
- entities: ('the sun measurement angle', 'the power-on state')(involve)
- entities: ('the thruster', 'the power-on state')(involve)
- entities: ('angular velocity analog', 'power-on state')(involve)
- entities: ('The control software', 'a two-byte fetch command')(involve)
- entities: ('The control software', 'the gyro')(share-phon)
- entities: ('the gyro', 'a two-byte fetch command')(involve)
- entities: ('the gyro', 'the gyro measurement data')(involve)
- entities: ('the gyro', 'the asynchronous serial port')(share-phon)
- entities: ('the software', 'a two-byte fetch command')(involve)
- entities: ('the software', 'the gyro')(share-phon)
- entities: ('the software', 'the gyro measurement data')(involve)
- entities: ('the software', 'the asynchronous serial port')(share-phon)
- entities: ('the software', 'sending commands and receiving data')(req-ref)
- entities: ('the gyro measurement data', 'the asynchronous serial port')(share-phon)
- entities: ('the gyro measurement data', 'sending commands and receiving data')(req-ref)
- entities: ('the asynchronous serial port', 'the gyro')(req-ref)
- entities: ('the asynchronous serial port', 'the software')(req-ref)
- entities: ('the asynchronous serial port', 'the gyro measurement data')(involve)
- entities: ('the asynchronous serial port', 'sending commands and receiving data')(req-ref)
- entities: ('sending commands and receiving data', 'the gyro measurement data')(involve)
- entities: ('sending commands and receiving data', 'the asynchronous serial port')(share-phon)
- entities: ('The time interval', 'instruction to reading data')(involve)
- entities: ('The time interval', 'asynchronous serial port')(share-phon)
- entities: ('instruction to reading data', 'asynchronous serial port')(share-phon)
- entities: ('asynchronous serial port', 'The time interval')(involve)
- entities: ('asynchronous serial port', 'instruction to reading data')(involve)
- entities: ('The software', 'the length')(involve)
- entities: ('The software', 'frame header')(involve)
- entities: ('The software', 'checksum of the collected data')(involve)
- entities: ('the length', 'frame header')(involve)
- entities: ('the length', 'checksum of the collected data')(involve)
- entities: ('frame header', 'the length')(involve)
- entities: ('frame header', 'checksum of the collected data')(involve)
- entities: ('checksum of the collected data', 'the length')(involve)
- entities: ('checksum of the collected data', 'frame header')(involve)
- entities: ('angle data', 'AD conversion')(involve)
- entities: ('AD conversion', 'angle data')(involve)
- entities: ('AD conversion', 'the SP signal')(involve)
- entities: ('AD conversion', 'the power state signal')(involve)
- entities: ('the SP signal', 'the power state signal')(involve)
- entities: ('angular velocity', 'the sun sensor')(share-phon)
- entities: ('the gyroscope', 'angular velocity')(involve)
- entities: ('the gyroscope', 'attitude angle')(involve)
- entities: ('the gyroscope', 'the sun sensor')(share-phon)
- entities: ('the gyroscope', 'visible sign of the sun')(req-ref)
- entities: ('attitude angle', 'the sun sensor')(share-phon)
- entities: ('the sun sensor', 'angular velocity')(involve)
- entities: ('the sun sensor', 'the gyroscope')(req-ref)
- entities: ('the sun sensor', 'attitude angle')(involve)
- entities: ('the sun sensor', 'visible sign of the sun')(req-ref)
- entities: ('visible sign of the sun', 'the sun sensor')(share-phon)
- entities: ('working mode word', 'three-axis angular velocity')(involve)
- entities: ('the gyro measurement data', 'the three-axis angular velocity')(involve)
- entities: ('the gyro measurement data', 'the attitude angle')(req-ref)
- entities: ('the attitude angle', 'the three-axis angular velocity')(involve)
- entities: ('the sun', 'the angle')(involve)
- entities: ('the sun', 'the sun sensor')(share-phon)
- entities: ('the sun', 'the angle')(involve)
- entities: ('the angle', 'the angle')(involve)
- entities: ('the sun sensor', 'the sun')(req-ref)
- entities: ('the sun sensor', 'the angle')(involve)
- entities: ('the sun sensor', 'the angle')(involve)
- entities: ('the sun sensor', 'the gyro calculation')(req-ref)
- entities: ('the angle', 'the angle')(involve)
- entities: ('the gyro calculation', 'the angle')(involve)
- entities: ('the gyro calculation', 'the sun sensor')(share-phon)
- entities: ('the gyro calculation', 'the angle')(involve)
- entities: ('the gyroscope', 'the angular velocity')(involve)
- entities: ('mode word', 'mode working time')(involve)
- entities: ('sun visible sign', 'satellite attitude angle')(req-ref)
- entities: ('sun visible sign', 'angular velocity')(req-ref)
- entities: ('the working mode word', 'the working time')(involve)
- entities: ('the working time', 'the working mode word')(involve)
- entities: ('the sun', 'the backup sun sensor')(share-phon)
- entities: ('the backup sun sensor', 'the sun')(req-ref)
- entities: ('the backup sun sensor', 'restart the sun search process')(req-ref)
- entities: ('the three-axis angular velocity', 'keep the attitude of the star stable')(req-ref)
- entities: ('the satellite', 'the three-axis angular velocity')(involve)
- entities: ('the satellite', 'keep the attitude of the star stable')(req-ref)
- entities: ('keep the attitude of the star stable', 'the three-axis angular velocity')(involve)
- entities: ('the satellite', 'the current three-axis angular velocity')(involve)
- entities: ('the satellite', 'the working mode word')(involve)
- entities: ('the working mode word', 'the current three-axis angular velocity')(involve)
- entities: ('the working mode word', 'the satellite')(share-phon)
- entities: ('satellite three-axis target angular velocity', 'working mode word')(involve)
- entities: ('the satellite three-axis target angular velocity', 'the working time of the current mode')(involve)
- entities: ('the working time of the current mode', 'the satellite three-axis target angular velocity')(involve)
- entities: ('whether to switch the working mode', 'the working time of the current mode')(involve)
- entities: ('the satellite', 'the current three-axis angular velocity')(involve)
- entities: ('the satellite', 'the working mode word')(involve)
- entities: ('the working mode word', 'the current three-axis angular velocity')(involve)
- entities: ('the working mode word', 'the satellite')(share-phon)
- entities: ('satellite three-axis control target', 'working mode word')(involve)
- entities: ('the control target', 'make the satellite')(involve)
- entities: ('the control target', 'the working time')(involve)
- entities: ('make the satellite', 'the working time')(involve)
- entities: ('the working time', 'whether to switch the working mode')(req-ref)
- entities: ('whether to switch the working mode', 'the working time')(involve)
- entities: ('the satellite', 'the current three-axis angular velocity')(involve)
- entities: ('the satellite', 'the working mode word')(involve)
- entities: ('the working mode word', 'the current three-axis angular velocity')(involve)
- entities: ('the working mode word', 'the satellite')(share-phon)
- entities: ('the control target', 'make the satellite')(involve)
- entities: ('the control target', 'the working time')(involve)
- entities: ('make the satellite', 'the working time')(involve)
- entities: ('the working time', 'whether to switch the working mode')(req-ref)
- entities: ('whether to switch the working mode', 'the working time')(involve)
- entities: ('current mode working time', 'control target')(involve)
- entities: ('control target', 'current mode working time')(involve)
- entities: ('the control target', "the angular velocity of the satellite's three-")(involve)
- entities: ('the control target', 'the working time')(involve)
- entities: ("the angular velocity of the satellite's three-", 'the working time')(involve)
- entities: ('the control amount', 'the satellite')(share-phon)
- entities: ('the satellite', 'the control amount')(involve)
- entities: ('the control computer', 'a gyro communication error')(involve)
- entities: ('the gyro', 'the software')(share-phon)
- entities: ('the software', 'the gyro')(share-phon)
- entities: ('the software', 'gyro')(share-phon)
- entities: ('gyro', 'the software')(share-phon)
- entities: ('perform data communication', 'the fetch command')(involve)
- entities: ('the power-off command', 'ground instructions')(involve)
- entities: ('ground instructions', 'the power-off command')(involve)
- entities: ('gyroscope', 'sun sensor')(share-phon)
- entities: ('gyroscope', 'thruster power-on switch control')(involve)
- entities: ('sun sensor', 'gyroscope')(share-phon)
- entities: ('sun sensor', 'thruster power-on switch control')(involve)
- entities: ('thruster power-on switch control', 'gyroscope')(share-phon)
- entities: ('the gyro power-on command', 'the asynchronous serial port')(share-phon)
- entities: ('the gyro power-on command', 'the gyro control command')(involve)
- entities: ('the asynchronous serial port', 'the gyro power-on command')(involve)
- entities: ('the asynchronous serial port', 'the gyro control command')(involve)
- entities: ('the asynchronous serial port', 'the asynchronous serial port')(share-phon)
- entities: ('the gyro control command', 'the gyro power-on command')(involve)
- entities: ('the gyro control command', 'the asynchronous serial port')(share-phon)
- entities: ('the gyro control command', 'the asynchronous serial port')(share-phon)
- entities: ('the asynchronous serial port', 'the asynchronous serial port')(share-phon)
- entities: ('the asynchronous serial port', 'the gyro control command')(involve)
- entities: ('sun sensor switch control register address k.', 'sun sensor switch control signal')(share-phon)
- entities: ('switching command', 'the software')(share-phon)
- entities: ('the sun sensor', 'switching command')(involve)
- entities: ('the sun sensor', 'the software')(involve)
- entities: ('the software', 'switching command')(involve)
- entities: ('the software', 'the sun sensor')(share-phon)
- entities: ('the software', 'the enable signal')(involve)
- entities: ('the software', 'the control register')(share-phon)
- entities: ('the enable signal', 'the control register')(share-phon)
- entities: ('the control register', 'the software')(req-ref)
- entities: ('the control register', 'the enable signal')(involve)
- entities: ('the three-axis control volume', 'thruster')(share-phon)
- entities: ('thruster', 'the three-axis control volume')(involve)
- entities: ('the actual thruster', 'the power-on state')(involve)
- entities: ('the actual thruster', 'the thruster')(share-phon)
- entities: ('the actual thruster', 'the calculated three-axis control value')(involve)
- entities: ('the power-on state', 'the thruster')(share-phon)
- entities: ('the thruster', 'the power-on state')(involve)
- entities: ('the thruster', 'the calculated three-axis control value')(req-ref)
- entities: ('the thruster', 'The thruster')(req-ref)
- entities: ('the calculated three-axis control value', 'the power-on state')(involve)
- entities: ('the calculated three-axis control value', 'the thruster')(share-phon)
- entities: ('The thruster', 'the power-on state')(involve)
- entities: ('The thruster', 'the thruster')(share-phon)
- entities: ('running status', 'digital tube')(share-phon)
- entities: ('the software', 'running status')(involve)
- entities: ('the software', 'digital tube')(share-phon)
- entities: ('the software', 'the serial port')(involve)
- entities: ('digital tube', 'running status')(involve)
- entities: ('digital tube', 'the serial port')(req-ref)
- entities: ('the serial port', 'running status')(involve)
- entities: ('the serial port', 'digital tube')(share-phon)
- entities: ('satellite current working mode word', 'current angle')(involve)
- entities: ('satellite current working mode word', 'current speed')(involve)
- entities: ('serial communication address', 'current angle')(involve)
- entities: ('serial communication address', 'current speed')(involve)
- entities: ('the telemetry data', 'the packaged data')(involve)
- entities: ('the telemetry data', 'the digital tube')(share-phon)
- entities: ('the packaged data', 'the telemetry data')(involve)
- entities: ('the packaged data', 'the digital tube')(share-phon)
- entities: ('the digital tube', 'the telemetry data')(involve)
- entities: ('the digital tube', 'the packaged data')(involve)
- entities: ('the digital tube', 'the serial port')(req-ref)
- entities: ('the digital tube', 'the telemetry data')(involve)
- entities: ('the serial port', 'the telemetry data')(involve)
- entities: ('the serial port', 'the packaged data')(involve)
- entities: ('the serial port', 'the digital tube')(share-phon)
- entities: ('the serial port', 'the telemetry data')(involve)
- entities: ('the telemetry data', 'the digital tube')(share-phon)
+ entities: ('the sun search control software', 'measurement data')((0.008010558, 8.535741e-06, 0.9738546)) -> involve
+ entities: ('the sun search control software', 'gyroscopes')((0.9959817, 1.8834513e-05, 0.002915032)) -> share-phon
+ entities: ('the sun search control software', 'sun sensors')((0.9954401, 4.1729123e-05, 0.00055631046)) -> share-phon
+ entities: ('gyroscopes', 'measurement data')((4.807113e-07, 0.0014095326, 0.9905246)) -> involve
+ entities: ('the sun sensor', 'detect the sun')((1.9858771e-06, 0.98671013, 1.1208537e-05)) ->req-ref
+ entities: ('the sun sensor', "maintain the spacecraft's sun-pointing attitude.")((2.7115627e-06, 0.98305976, 3.1388918e-05)) ->req-ref
+ entities: ('The software', 'ground commands')((0.0020008325, 5.8880454e-05, 0.99863607)) -> involve
+ entities: ('The software', 'a serial port')((0.99298286, 2.8258964e-05, 0.004438225)) -> share-phon
+ entities: ('The software', 'command verification')((0.0028419015, 0.00014050638, 0.99860674)) -> involve
+ entities: ('The software', "the satellite's operating mode word")((0.003726073, 0.00014627779, 0.999171)) -> involve
+ entities: ('a serial port', 'ground commands')((8.543493e-08, 0.0032343054, 0.9992422)) -> involve
+ entities: ('a serial port', 'command verification')((1.2145067e-07, 0.0076841856, 0.99922585)) -> involve
+ entities: ('a serial port', "the satellite's operating mode word")((1.5937783e-07, 0.007997352, 0.9995395)) -> involve
+ entities: ('The control software', 'a two-byte data acquisition command')((0.04742541, 6.38701e-06, 0.9996984)) -> involve
+ entities: ('The control software', 'the gyroscope')((0.9995036, 2.786946e-05, 0.0015185702)) -> share-phon
+ entities: ('The control software', 'a serial port')((0.9998134, 6.370354e-06, 0.0022168697)) -> share-phon
+ entities: ('the gyroscope', 'a two-byte data acquisition command')((3.8789175e-08, 0.0011584118, 0.98438567)) -> involve
+ entities: ('a serial port', 'a two-byte data acquisition command')((1.6369492e-07, 0.0019623935, 0.9999411)) -> involve
+ entities: ('a serial port', 'the gyroscope measurement data')((1.6596221e-05, 0.011812492, 0.93310547)) -> involve
+ entities: ('another serial port', 'the gyroscope measurement data')((1.1592077e-05, 0.014021704, 0.97150856)) -> involve
+ entities: ('AD conversion', 'The power status signal')((9.928542e-08, 0.00083366066, 0.9437878)) -> involve
+ entities: ('AD conversion', 'a gyroscope home appliance command')((6.9684143e-06, 0.00018861375, 0.9952303)) -> involve
+ entities: ('the software', 'a gyroscope home appliance command')((0.008178115, 3.2685057e-05, 0.90950054)) -> involve
+ entities: ('the software', 'a serial port')((0.9814626, 5.0120638e-05, 0.0012527902)) -> share-phon
+ entities: ('the software', 'a gyroscope control command')((0.0009240729, 4.594507e-05, 0.95410204))  -> involve
+ entities: ('a serial port', 'a gyroscope control command')((1.08278506e-07, 0.0021637443, 0.91111416)) -> involve
+ entities: ('The sun sensor', 'instruction')((0.00064977375, 0.00036025708, 0.9001994)) -> involve
+ entities: ('instruction', 'the enable signal')((1.8995159e-05, 1.5750777e-05, 0.9959428)) -> involve
+ entities: ('The software', 'the enable signal')((0.0006477748, 0.0001313751, 0.99747664)) -> involve
+ entities: ('The software', 'the controller')((0.98851705, 0.00011527341, 0.00031011665)) -> share-phon
+ entities: ('the controller', 'the enable signal')((4.937404e-07, 0.0011508042, 0.999526))  -> involve
+ entities: ('The sun search software controller', 'gyroscopes')((0.99928135, 3.8046826e-05, 0.0021399702)) -> share-phon
+ entities: ('The sun search software controller', 'sun sensors')((0.99918157, 4.628951e-05, 0.0009512169)) -> share-phon
+ entities: ('The sun search software controller', 'three-axis control thrusters')((0.99844825, 4.8920952e-05, 0.002269959)) -> share-phon
+ entities: ('The system', 'a data management computer')((0.96652615, 1.9747013e-07, 0.00089687307)) -> share-phon
+ entities: ('The system', 'gyroscopes')((0.9983386, 6.7617466e-06, 0.001946658)) -> share-phon
+ entities: ('gyroscopes', "monitor the satellite's three-axis angular velocity")((2.5727516e-06, 0.9976428, 0.001678022))  ->req-ref
+ entities: ('gyroscopes', 'obtain the angular velocity analog signal')((2.0883465e-06, 0.995741, 0.0013992863))  ->req-ref
+ entities: ('The system', 'sun sensors')((0.99804604, 3.7068542e-06, 0.0016184219)) -> share-phon
+ entities: ('The system', "the sun's position")((0.019313147, 4.7137354e-07, 0.9963498)) -> involve
+ entities: ('sun sensors', "the sun's position")((1.5683296e-05, 0.011267869, 0.9985654)) -> involve
+ entities: ('sun sensors', 'obtain the sun measurement angle')((8.261285e-06, 0.9950564, 0.0019060858))  ->req-ref
+ entities: ('sun sensors', 'perceive the sun visible flag')((2.5914393e-05, 0.99481755, 0.0025078969))  ->req-ref
+ entities: ('The system', 'three-axis control thrusters')((0.99599093, 5.5371142e-06, 0.0029842854)) -> share-phon
+ entities: ('The system', 'control the three-axis torque')((0.004146679, 9.3782313e-07, 0.9960426)) -> involve
+ entities: ('three-axis control thrusters', 'control the three-axis torque')((1.1600836e-05, 0.008613064, 0.9977562)) -> involve
+ entities: ('three-axis control thrusters', 'drive the satellite to rotate.')((1.7463495e-05, 0.9929583, 0.008128736))  ->req-ref
+ entities: ('The system', 'a mode register')((0.9548818, 1.6557775e-06, 0.012225878)) -> share-phon
+ entities: ('The system', 'the current operating mode word')((0.0048741107, 5.1946345e-06, 0.9962373)) -> involve
+ entities: ('The system', 'the current mode duration')((0.009868737, 4.48897e-06, 0.9927108)) -> involve
+ entities: ('a mode register', 'the current operating mode word')((1.31657725e-05, 0.003650223, 0.9959247)) -> involve
+ entities: ('a mode register', 'the current mode duration')((2.6791193e-05, 0.0031559183, 0.99210733)) -> involve
+ entities: ('a mode register', 'the target angle')((2.184985e-05, 0.0044233417, 0.9798497)) -> involve
+ entities: ('the sun search control software', 'the measurement data')((0.03898888, 6.159757e-06, 0.9631915))  -> involve
+ entities: ('gyroscope', 'the measurement data')((1.213449e-06, 0.0014143033, 0.9020505)) -> involve
+ entities: ('Sensor', 'sun sensors')((0.97210544, 0.00019150927, 0.0011326127))-> share-phon
+ entities: ('Sensor', 'gyroscopes')((0.9434761, 0.00041995285, 0.0019325158))-> share-phon
+ entities: ('Actuator', 'the attitude control torque')((0.0042204624, 0.0046443804, 0.98892856)) -> involve
+ entities: ('thrusters', 'the attitude control torque')((1.3503447e-05, 0.014217433, 0.9757287)) -> involve
+ entities: ('Controller', 'The control computer CPU')((0.9916447, 4.7763293e-05, 0.0001141975))-> share-phon
+ entities: ('the control computer', 'an interrupt')((0.00014019843, 0.0006093212, 0.99884486)) -> involve
+ entities: ('thrusters', 'the switch data')((7.3669446e-07, 0.0006727701, 0.9993292)) -> involve
+ entities: ('The control computer', 'microcontroller')((0.9902564, 8.1050985e-06, 0.042615548)) -> share-phon
+ entities: ('the sun search control software', 'the 32ms timer interrupt.')((0.99966335, 3.78666e-05, 0.004190448)) -> share-phon
+ entities: ('the software', 'the timer')((0.9774564, 0.0008093424, 0.015820974)) -> share-phon
+ entities: ('timer interrupt signal', 'the software')((1.1134842e-06, 0.0020885444, 0.99655676))  -> involve
+ entities: ('timer interrupt signal', 'the timer')((0.023738122, 0.011003111, 0.99785054)) -> involve
+ entities: ('timer interrupt signal', 'the timing control register')((5.468572e-06, 0.000818718, 0.999997)) -> involve
+ entities: ('the software', 'the timer')((0.9979982, 2.0705402e-05, 0.00022789028)) -> share-phon
+ entities: ('the software', 'cycle interrupt signal')((0.9993339, 8.687924e-05, 0.0033087456)) -> share-phon
+ entities: ('the timer', 'cycle interrupt signal')((0.9971673, 0.0014730555, 0.0029138695)) -> share-phon
+ entities: ('the timing control register', 'cycle interrupt signal')((0.99904543, 0.0014748829, 0.003456244)) -> share-phon
+ entities: ('the serial port', 'ground commands')((1.6638377e-07, 0.0025863184, 0.99857855)) -> involve
+ entities: ('the serial port', 'the satellite working mode word')((2.036505e-07, 0.04788836, 0.9952501))  -> involve
+ entities: ('the asynchronous serial port', 'data')((3.003577e-07, 0.004803603, 0.99973506)) -> involve
+ entities: ('digital control sub-system', 'one remote command')((0.0018928464, 3.3116372e-05, 0.9987884))  -> involve
+ entities: ('digital control sub-system', 'the control software')((0.99916255, 2.4373463e-05, 0.0009465796)) -> share-phon
+ entities: ('the control software', 'one remote command')((2.39905e-06, 0.0014754287, 0.9986085))  -> involve
+ entities: ('gyro', 'the power-on status')((1.19200905e-07, 0.00063956284, 0.9961914)) -> involve
+ entities: ('the serial port', 'the power-on status')((4.5837254e-08, 0.0037479177, 0.9967854))  -> involve
+ entities: ('the sun sensor', 'the power-on state')((2.3234234e-06, 0.0007193732, 0.99781704)) -> involve
+ entities: ('the thruster', 'the power-on state')((2.3902621e-06, 0.00060498406, 0.99974555)) -> involve
+ entities: ('The control software', 'a two-byte fetch command')((0.044658948, 7.627616e-06, 0.99429625)) -> involve
+ entities: ('The control software', 'the gyro')((0.99165946, 6.6835535e-05, 0.0063345446)) -> share-phon
+ entities: ('the software', 'the asynchronous serial port')((0.98881245, 1.2053938e-05, 9.332184e-06)) -> share-phon
+ entities: ('the asynchronous serial port', 'the gyro measurement data')((1.3767312e-06, 0.018724076, 0.9886113)) -> involve
+ entities: ('the asynchronous serial port', 'sending commands and receiving data')((3.186945e-06, 0.98611313, 0.005183213))   ->req-ref
+ entities: ('The time interval', 'instruction to reading data')((0.0022361416, 0.00029427488, 0.99940383)) -> involve
+ entities: ('The time interval', 'asynchronous serial port')((0.9995561, 0.00020891277, 0.010791005)) -> share-phon
+ entities: ('asynchronous serial port', 'instruction to reading data')((1.880462e-07, 0.008531822, 0.99827516)) -> involve
+ entities: ('The software', 'the length')((0.027302109, 2.5652113e-05, 0.99820495)) -> involve
+ entities: ('The software', 'frame header')((0.06189884, 1.1830226e-05, 0.99859625)) -> involve
+ entities: ('The software', 'checksum of the collected data')((0.019130649, 2.8527675e-05, 0.9976618)) -> involve
+ entities: ('the gyroscope', 'angular velocity')((2.0572237e-07, 0.007084779, 0.9920229)) -> involve
+ entities: ('the gyroscope', 'attitude angle')((2.7579122e-07, 0.009193568, 0.967046)) -> involve
+ entities: ('the sun sensor', 'the angle')((8.583216e-06, 0.031311836, 0.9359568)) -> involve
+ entities: ('the gyroscope', 'the angular velocity')((5.045489e-06, 0.0077469693, 0.99116147)) -> involve
+ entities: ('the satellite', 'the three-axis angular velocity')((1.5372613e-06, 0.017586386, 0.9985777)) -> involve
+ entities: ('the satellite', 'keep the attitude of the star stable')((2.3362327e-06, 0.9988212, 0.0056916196))  ->req-ref
+ entities: ('the satellite', 'the current three-axis angular velocity')((7.112125e-07, 0.0042367103, 0.99850625)) -> involve
+ entities: ('the satellite', 'the current three-axis angular velocity')((7.112125e-07, 0.0042367103, 0.99850625)) -> involve
+ entities: ('the control target', 'the working time')((1.8981471e-05, 0.00010730831, 0.99987185)) -> involve
+ entities: ('the satellite', 'the current three-axis angular velocity')((7.112125e-07, 0.0042367103, 0.99850625)) -> involve
+ entities: ('the control target', 'the working time')((2.728522e-05, 9.953982e-05, 0.99986744)) -> involve
+ entities: ('the control target', 'the working time')((2.2970755e-06, 3.9227966e-06, 0.990218)) -> involve
+ entities: ('the control computer', 'a gyro communication error')((0.0002545558, 0.0004609177, 0.99952674)) -> involve
+ entities: ('the gyro', 'the software')((0.9922097, 0.0005894771, 0.10508385)) -> share-phon
+ entities: ('the software', 'gyro')((0.9975193, 0.0015923947, 0.000116275594)) -> share-phon
+ entities: ('the asynchronous serial port', 'the gyro power-on command')((2.7871477e-07, 0.023250427, 0.99234337)) -> involve
+ entities: ('the asynchronous serial port', 'the gyro control command')((4.43747e-07, 0.049951963, 0.968765)) -> involve
+ entities: ('the asynchronous serial port', 'the gyro control command')((1.8220727e-07, 0.032808036, 0.97726727)) -> involve
+ entities: ('the sun sensor', 'switching command')((3.3092503e-05, 0.0078529725, 0.9986064)) -> involve
+ entities: ('the software', 'the enable signal')((0.0016377629, 0.00022782054, 0.9868361)) -> involve
+ entities: ('the software', 'the control register')((0.99911016, 0.00048051655, 0.0008497438)) -> share-phon
+ entities: ('the control register', 'the enable signal')((1.7193814e-06, 0.0045069596, 0.9991543)) -> involve
+ entities: ('thruster', 'the three-axis control volume')((3.4833504e-06, 0.0003280575, 0.9994831)) -> involve
+ entities: ('the actual thruster', 'the power-on state')((0.005037354, 0.0004203469, 0.9999944)) -> involve
+ entities: ('the actual thruster', 'the thruster')((0.9976037, 0.001803442, 0.071524136)) -> share-phon
+ entities: ('the actual thruster', 'the calculated three-axis control value')((0.0047244756, 0.018192096, 0.9543568)) -> involve
+ entities: ('the thruster', 'the power-on state')((7.9589137e-07, 0.0009817099, 0.98792654)) -> involve
+ entities: ('the software', 'running status')((0.00036838255, 0.00028531931, 0.99841917)) -> involve
+ entities: ('the software', 'digital tube')((0.9973521, 0.0002065916, 0.0023422788)) -> share-phon
+ entities: ('digital tube', 'running status')((1.7400689e-07, 0.0015286591, 0.9969868)) -> involve
+ entities: ('the digital tube', 'the telemetry data')((2.2159493e-07, 0.0034162821, 0.97149175)) -> involve
